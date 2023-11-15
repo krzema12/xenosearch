@@ -55,7 +55,7 @@ workflow(
             )
         )
         uses(
-            name = "Deploy merged docs to GitHub Pages",
+            name = "Deploy to GitHub Pages",
             action = GithubPagesDeployAction(
                 folder = "build/dist/js/productionExecutable",
             ),

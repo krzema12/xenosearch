@@ -62,7 +62,7 @@ jobs:
       with:
         arguments: 'jsBrowserDistribution'
     - id: 'step-3'
-      name: 'Deploy merged docs to GitHub Pages'
+      name: 'Deploy to GitHub Pages'
       uses: 'JamesIves/github-pages-deploy-action@v4'
       with:
         folder: 'build/dist/js/productionExecutable'
