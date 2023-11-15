@@ -28,9 +28,9 @@ fun App() {
     Br {}
 
     Ul {
-        analyzeIngredients(ingredients).forEach { (ingredient, isXenoestrogen) ->
+        analyzeIngredients(ingredients).forEach { (knownXenoestrogen, isPresent) ->
             Li {
-                Text("$ingredient: $isXenoestrogen")
+                Text("$knownXenoestrogen: $isPresent")
             }
         }
     }

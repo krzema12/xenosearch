@@ -1,19 +1,16 @@
 package logic
 
+import data.xenoestrogens
+
 fun analyzeIngredients(ingredients: String): Map<String, Boolean> {
-    if (ingredients.isBlank()) {
-        return emptyMap()
+    val individualIngredients = ingredients.split(",").map {
+        it.trim().lowercase()
     }
-
-    return ingredients.split(",")
-        .map { it.trim() }
-        .associateWith { isXenoestrogen(it) }
+    return xenoestrogens
+        .associateBy { it.displayName }
+        .mapValues {
+            it.value.searchTerms.any {
+                it.lowercase() in individualIngredients
+            }
+        }
 }
-
-private val xenoestrogens = listOf(
-    "BPA",
-    "parabeny",
-)
-
-private fun isXenoestrogen(name: String): Boolean =
-    xenoestrogens.any { it.lowercase() == name.lowercase() }
