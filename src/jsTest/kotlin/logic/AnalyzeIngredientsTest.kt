@@ -31,4 +31,18 @@ class AnalyzeIngredientsTest : FunSpec({
             "Parabeny" to false,
         )
     }
+
+    test("finds one ingredient") {
+        // given
+        val ingredients = "water   , parabens,   BPA."
+
+        // when
+        val found = analyzeIngredients(ingredients = ingredients)
+
+        // then
+        found shouldBe mapOf(
+            "Bisfenol A" to true,
+            "Parabeny" to true,
+        )
+    }
 })
