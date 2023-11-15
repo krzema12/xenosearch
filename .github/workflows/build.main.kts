@@ -25,7 +25,7 @@ workflow(
         uses(action = Checkout())
         uses(action = SetupJava(
             distribution = SetupJava.Distribution.Adopt,
-            javaVersion = "21",
+            javaVersion = "17",
         ))
         uses(
             name = "Build",

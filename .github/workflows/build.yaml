@@ -35,7 +35,7 @@ jobs:
     - id: 'step-1'
       uses: 'actions/setup-java@v3'
       with:
-        java-version: '21'
+        java-version: '17'
         distribution: 'adopt'
     - id: 'step-2'
       name: 'Build'
