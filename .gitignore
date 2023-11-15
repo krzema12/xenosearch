@@ -1,3 +1,4 @@
 .gradle
+.github/workflows/generated
 .idea
 build
