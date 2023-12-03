@@ -13,7 +13,8 @@ class RealProductsTest : FunSpec({
     test("Deoproce SPF50") {
         val currentlyStored = Path("src/jvmTest/resources/products/Deoproce SPF50-snapshot.json").readText()
         val foundXenoestrogens = analyzeIngredients(ingredients = getProductIngredients("Deoproce SPF50"))
-        val serialized = json.encodeToString(MapSerializer(String.serializer(), Boolean.serializer()), foundXenoestrogens)
+        val sortedKeys = foundXenoestrogens.toSortedMap()
+        val serialized = json.encodeToString(MapSerializer(String.serializer(), Boolean.serializer()), sortedKeys)
 
         currentlyStored shouldBe serialized
 
