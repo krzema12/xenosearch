@@ -13,7 +13,7 @@ class RealProductsTest : FunSpec({
     test("Deoproce SPF50") {
         val currentlyStored = Path("src/jvmTest/resources/products/Deoproce SPF50-snapshot.json").readText()
         val foundXenoestrogens = analyzeIngredients(ingredients = getProductIngredients("Deoproce SPF50"))
-        val serialized = Json.encodeToString(MapSerializer(String.serializer(), Boolean.serializer()), foundXenoestrogens)
+        val serialized = json.encodeToString(MapSerializer(String.serializer(), Boolean.serializer()), foundXenoestrogens)
 
         currentlyStored shouldBe serialized
 
@@ -24,3 +24,7 @@ class RealProductsTest : FunSpec({
 private fun getProductIngredients(name: String): String =
     RealProductsTest::class.java.getResource("products/$name.txt")?.readText()
         ?: error("Could not read the resource!")
+
+private val json = Json {
+    prettyPrint = true
+}
