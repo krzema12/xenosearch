@@ -18,4 +18,10 @@ val xenoestrogens = listOf(
             "Parabens",
         )
     ),
+    Ingredient(
+        displayName = "4-methylbenzylidene camphor",
+        searchTerms = listOf(
+            "4-methylbenzylidene camphor",
+        ),
+    )
 )
