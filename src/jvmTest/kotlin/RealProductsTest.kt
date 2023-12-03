@@ -1,8 +1,6 @@
-import io.kotest.core.config.configuration
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
-import kotlinx.serialization.builtins.MapSerializer
-import kotlinx.serialization.builtins.serializer
+import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import logic.analyzeIngredients
 import kotlin.io.path.Path
@@ -14,7 +12,7 @@ class RealProductsTest : FunSpec({
         val currentlyStored = Path("src/jvmTest/resources/products/Deoproce SPF50-snapshot.json").readText()
         val foundXenoestrogens = analyzeIngredients(ingredients = getProductIngredients("Deoproce SPF50"))
         val sortedKeys = foundXenoestrogens.toSortedMap()
-        val serialized = json.encodeToString(MapSerializer(String.serializer(), Boolean.serializer()), sortedKeys)
+        val serialized = json.encodeToString<Map<String, Boolean>>(sortedKeys)
 
         currentlyStored shouldBe serialized
 
