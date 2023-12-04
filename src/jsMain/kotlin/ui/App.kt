@@ -11,12 +11,17 @@ import dev.petuska.kmdc.banner.Graphic
 import dev.petuska.kmdc.banner.Icon
 import dev.petuska.kmdc.banner.MDCBanner
 import dev.petuska.kmdc.banner.PrimaryAction
+import dev.petuska.kmdc.data.table.Body
+import dev.petuska.kmdc.data.table.Cell
+import dev.petuska.kmdc.data.table.Container
+import dev.petuska.kmdc.data.table.MDCDataTable
+import dev.petuska.kmdc.data.table.MDCDataTableHeader
+import dev.petuska.kmdc.data.table.Row
 import dev.petuska.kmdc.textfield.MDCTextArea
 import dev.petuska.kmdc.typography.MDCBody1
 import dev.petuska.kmdcx.icons.MDCIcon
 import dev.petuska.kmdcx.icons.mdcIcon
 import logic.analyzeIngredients
-import org.jetbrains.compose.web.css.CSSColorValue
 import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.FlexDirection
@@ -29,11 +34,8 @@ import org.jetbrains.compose.web.css.margin
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.Div
-import org.jetbrains.compose.web.dom.Li
-import org.jetbrains.compose.web.dom.Text
-import org.jetbrains.compose.web.dom.Ul
-import org.jetbrains.compose.web.dom.Text as ComposeText
 import dev.petuska.kmdc.banner.Text as BannerText
+import org.jetbrains.compose.web.dom.Text as ComposeText
 
 @Composable
 fun App() {
@@ -74,16 +76,25 @@ fun IngredientsInput(value: String, onChange: (String) -> Unit) {
 
 @Composable
 private fun Results(ingredients: String) {
-    Ul {
-        analyzeIngredients(ingredients)
-            .entries
-            .sortedWith(compareBy({ !it.value }, { it.key.lowercase() }))
-            .forEach { (knownXenoestrogen, isPresent) ->
-                Li {
-                    val resultMarker = if (isPresent) "⚠\uFE0F" else "⚪"
-                    Text("$knownXenoestrogen: $resultMarker")
-                }
+    MDCDataTable {
+        Container {
+            MDCDataTableHeader {
+                Cell(text = "Ksenoestrogen")
+                Cell(text = "Znaleziono")
             }
+            Body {
+                analyzeIngredients(ingredients)
+                    .entries
+                    .sortedWith(compareBy({ !it.value }, { it.key.lowercase() }))
+                    .forEach { (knownXenoestrogen, isPresent) ->
+                        Row {
+                            Cell(text = knownXenoestrogen)
+                            val resultMarker = if (isPresent) "⚠\uFE0F" else "⚪"
+                            Cell(text = resultMarker)
+                        }
+                    }
+            }
+        }
     }
 }
 
