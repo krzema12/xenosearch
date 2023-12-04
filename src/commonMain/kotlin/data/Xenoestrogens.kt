@@ -28,6 +28,8 @@ val xenoestrogens = listOf(
         displayName = "genisteina",
         searchTerms = listOf(
             "genisteina",
+            "korzeń kudzu",
+            "kudzu (korzeń)",
         ),
     ),
 )
