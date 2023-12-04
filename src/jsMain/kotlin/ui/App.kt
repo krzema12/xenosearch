@@ -5,14 +5,20 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import dev.petuska.kmdc.banner.Actions
+import dev.petuska.kmdc.banner.Content
+import dev.petuska.kmdc.banner.Graphic
+import dev.petuska.kmdc.banner.Icon
+import dev.petuska.kmdc.banner.MDCBanner
+import dev.petuska.kmdc.banner.PrimaryAction
+import dev.petuska.kmdc.textfield.MDCTextArea
+import dev.petuska.kmdc.typography.MDCBody1
+import dev.petuska.kmdcx.icons.MDCIcon
+import dev.petuska.kmdcx.icons.mdcIcon
 import logic.analyzeIngredients
-import org.jetbrains.compose.web.attributes.cols
-import org.jetbrains.compose.web.attributes.rows
-import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.FlexDirection
 import org.jetbrains.compose.web.css.boxSizing
-import org.jetbrains.compose.web.css.color
 import org.jetbrains.compose.web.css.display
 import org.jetbrains.compose.web.css.flexDirection
 import org.jetbrains.compose.web.css.height
@@ -22,8 +28,9 @@ import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Li
 import org.jetbrains.compose.web.dom.Text
-import org.jetbrains.compose.web.dom.TextArea
 import org.jetbrains.compose.web.dom.Ul
+import org.jetbrains.compose.web.dom.Text as ComposeText
+import dev.petuska.kmdc.banner.Text as BannerText
 
 @Composable
 fun App() {
@@ -38,21 +45,27 @@ fun App() {
 
 @Composable
 private fun Header() {
-    Div(attrs = { style { color(Color.red) } }) {
-        Text("Aplikacja niegotowa do publikacji, w trakcie budowy")
+    MDCBanner(open = true) {
+        Content {
+            Graphic {
+                Icon(attrs = { mdcIcon() }) { ComposeText(MDCIcon.Warning.type) }
+            }
+            BannerText("Aplikacja niegotowa do publikacji, w trakcie budowy")
+        }
+        Actions {
+            PrimaryAction("OK")
+        }
     }
 
-    Text("Wklej skład produktu w poniższe pole:")
+    MDCBody1("Wklej skład produktu w poniższe pole:")
 }
 
 @Composable
 fun IngredientsInput(value: String, onChange: (String) -> Unit) {
-    TextArea(value = value) {
-        rows(20)
-        cols(80)
-        onInput {
-            onChange(it.value)
-        }
+    MDCTextArea(
+        value = value,
+    ) {
+        onInput { onChange(it.value) }
     }
 }
 

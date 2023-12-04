@@ -11,7 +11,12 @@ repositories {
 
 kotlin {
     js(IR) {
-        browser()
+        browser {
+            commonWebpackConfig {
+                cssSupport { enabled.set(true) }
+                scssSupport { enabled.set(true) }
+            }
+        }
         binaries.executable()
     }
     jvm()
@@ -26,6 +31,8 @@ kotlin {
         val jsMain by getting {
             dependencies {
                 implementation(compose.html.core)
+                implementation("dev.petuska:kmdc:0.1.1")
+                implementation("dev.petuska:kmdcx:0.1.1")
             }
         }
 
