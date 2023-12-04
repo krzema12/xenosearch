@@ -33,6 +33,12 @@ val xenoestrogens = listOf(
         ),
     ),
     Ingredient(
+        displayName = "daidzeina",
+        searchTerms = listOf(
+            "daidzeina",
+        ),
+    ),
+    Ingredient(
         displayName = "biochanina A",
         searchTerms = listOf(
             "biochanina A",

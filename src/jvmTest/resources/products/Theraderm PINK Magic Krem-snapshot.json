@@ -3,6 +3,6 @@
     "Bisfenol A": false,
     "Parabeny": false,
     "biochanina A": false,
-    "daidzeina": false,
+    "daidzeina": true,
     "genisteina": true
 }
