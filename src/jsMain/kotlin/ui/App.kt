@@ -16,8 +16,11 @@ import dev.petuska.kmdc.typography.MDCBody1
 import dev.petuska.kmdcx.icons.MDCIcon
 import dev.petuska.kmdcx.icons.mdcIcon
 import logic.analyzeIngredients
+import org.jetbrains.compose.web.css.CSSColorValue
+import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.FlexDirection
+import org.jetbrains.compose.web.css.backgroundColor
 import org.jetbrains.compose.web.css.boxSizing
 import org.jetbrains.compose.web.css.display
 import org.jetbrains.compose.web.css.flexDirection
@@ -45,7 +48,7 @@ fun App() {
 
 @Composable
 private fun Header() {
-    MDCBanner(open = true) {
+    MDCBanner(open = true, attrs = { style { backgroundColor(Color.pink) } }) {
         Content {
             Graphic {
                 Icon(attrs = { mdcIcon() }) { ComposeText(MDCIcon.Warning.type) }
