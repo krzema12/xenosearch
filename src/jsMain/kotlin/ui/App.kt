@@ -39,10 +39,14 @@ fun App() {
     Br {}
 
     Ul {
-        analyzeIngredients(ingredients).forEach { (knownXenoestrogen, isPresent) ->
-            Li {
-                Text("$knownXenoestrogen: ${if (isPresent) "⚠\uFE0F" else "⚪" }")
+        analyzeIngredients(ingredients)
+            .entries
+            .sortedWith(compareBy({ !it.value }, { it.key.lowercase() }))
+            .forEach { (knownXenoestrogen, isPresent) ->
+                Li {
+                    val resultMarker = if (isPresent) "⚠\uFE0F" else "⚪"
+                    Text("$knownXenoestrogen: $resultMarker")
+                }
             }
-        }
     }
 }
