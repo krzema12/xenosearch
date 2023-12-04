@@ -83,4 +83,28 @@ class AnalyzeIngredientsTest : FunSpec({
             "Baz" to true,
         )
     }
+
+    test("finds known ingredient if it's a substring of some longer ingredient") {
+        // given
+        val known = listOf(
+            Ingredient(
+                displayName = "Foo",
+                searchTerms = listOf("foo"),
+            ),
+            Ingredient(
+                displayName = "Bar",
+                searchTerms = listOf("bar"),
+            ),
+        )
+        val ingredients = "foo, boo bar bee"
+
+        // when
+        val found = analyzeIngredients(ingredients = ingredients, knownXenoestrogens = known)
+
+        // then
+        found shouldBe mapOf(
+            "Foo" to true,
+            "Bar" to true,
+        )
+    }
 })

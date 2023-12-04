@@ -13,8 +13,8 @@ fun analyzeIngredients(
     return knownXenoestrogens
         .associateBy { it.displayName }
         .mapValues {
-            it.value.searchTerms.any {
-                it.lowercase() in individualIngredients
+            it.value.searchTerms.any { searchTerm ->
+                individualIngredients.any { searchTerm.lowercase() in it }
             }
         }
 }
