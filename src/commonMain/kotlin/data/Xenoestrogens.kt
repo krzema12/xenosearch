@@ -23,5 +23,11 @@ val xenoestrogens = listOf(
         searchTerms = listOf(
             "4-methylbenzylidene camphor",
         ),
-    )
+    ),
+    Ingredient(
+        displayName = "genisteina",
+        searchTerms = listOf(
+            "genisteina",
+        ),
+    ),
 )
