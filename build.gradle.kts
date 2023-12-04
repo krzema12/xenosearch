@@ -1,7 +1,7 @@
 plugins {
     kotlin("multiplatform") version "1.9.21"
     id("org.jetbrains.compose") version "1.5.11"
-    id("io.kotest.multiplatform") version "5.7.0"
+    id("io.kotest.multiplatform") version "5.8.0"
     kotlin("plugin.serialization") version "1.9.21"
 }
 
