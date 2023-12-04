@@ -2,6 +2,6 @@
     "4-methylbenzylidene camphor": false,
     "Bisfenol A": false,
     "Parabeny": false,
-    "biochanina A": false,
-    "genisteina": true
+    "biochanina A": true,
+    "genisteina": false
 }

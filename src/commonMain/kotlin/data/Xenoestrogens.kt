@@ -32,4 +32,10 @@ val xenoestrogens = listOf(
             "kudzu (korzeń)",
         ),
     ),
+    Ingredient(
+        displayName = "biochanina A",
+        searchTerms = listOf(
+            "biochanina A",
+        ),
+    ),
 )
