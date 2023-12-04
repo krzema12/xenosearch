@@ -69,7 +69,9 @@ class AnalyzeIngredientsTest : FunSpec({
                 searchTerms = listOf("baz"),
             ),
         )
-        val ingredients = "foo    , bar,    baz."
+        val ingredients = """foo    , bar
+            baz.
+        """.trimIndent()
 
         // when
         val found = analyzeIngredients(ingredients = ingredients, knownXenoestrogens = known)

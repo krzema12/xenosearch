@@ -7,7 +7,7 @@ fun analyzeIngredients(
     ingredients: String,
     knownXenoestrogens: List<Ingredient> = xenoestrogens,
 ): Map<String, Boolean> {
-    val individualIngredients = ingredients.split(",", ".").map {
+    val individualIngredients = ingredients.split(",", ".", "\n").map {
         it.trim().lowercase()
     }
     return knownXenoestrogens
