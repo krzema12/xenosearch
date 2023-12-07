@@ -95,8 +95,8 @@ private fun Results(ingredients: String) {
     MDCDataTable {
         Container {
             MDCDataTableHeader {
-                Cell(text = "Ksenoestrogen")
-                Cell(text = "Wynik")
+                Cell(text = "Ksenoestrogen", attrs = { style { fontWeight("bold") } })
+                Cell(text = "Wynik", attrs = { style { fontWeight("bold") } })
             }
             Body {
                 analyzeIngredients(ingredients)
