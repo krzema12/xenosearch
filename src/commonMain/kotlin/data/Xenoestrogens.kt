@@ -4,7 +4,7 @@ import model.Ingredient
 
 val xenoestrogens = listOf(
     Ingredient(
-        displayName = "Bisfenol A",
+        displayName = "Bisfenol A (BPA)",
         searchTerms = listOf(
             "Bisfenol A",
             "Bisphenol A",
