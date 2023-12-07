@@ -20,6 +20,7 @@ import dev.petuska.kmdc.dialog.Header
 import dev.petuska.kmdc.dialog.MDCDialog
 import dev.petuska.kmdc.dialog.Title
 import dev.petuska.kmdc.dialog.onClosed
+import dev.petuska.kmdc.elevation.MDCElevation
 import dev.petuska.kmdc.textfield.MDCTextArea
 import dev.petuska.kmdc.typography.MDCBody1
 import dev.petuska.kmdc.typography.MDCBody2
@@ -35,6 +36,8 @@ import org.jetbrains.compose.web.css.flexDirection
 import org.jetbrains.compose.web.css.fontWeight
 import org.jetbrains.compose.web.css.height
 import org.jetbrains.compose.web.css.margin
+import org.jetbrains.compose.web.css.maxWidth
+import org.jetbrains.compose.web.css.padding
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.rgb
@@ -48,10 +51,21 @@ fun App() {
 
     WorkInProgressWarning(warningDialogOpen, onClosed = { warningDialogOpen = false })
 
-    Column {
-        Header()
-        IngredientsInput(value = ingredients, onChange = { ingredients = it })
-        Results(ingredients)
+    MDCElevation(
+        z = 5,
+        attrs = {
+            style {
+                maxWidth(900.px)
+                padding(20.px)
+                property("margin", "20px auto")
+            }
+        },
+    ) {
+        Column {
+            Header()
+            IngredientsInput(value = ingredients, onChange = { ingredients = it })
+            Results(ingredients)
+        }
     }
 }
 
