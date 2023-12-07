@@ -24,6 +24,7 @@ import dev.petuska.kmdc.elevation.MDCElevation
 import dev.petuska.kmdc.textfield.MDCTextArea
 import dev.petuska.kmdc.typography.MDCBody1
 import dev.petuska.kmdc.typography.MDCBody2
+import dev.petuska.kmdc.typography.MDCH4
 import dev.petuska.kmdcx.icons.MDCIcon
 import dev.petuska.kmdcx.icons.mdcIcon
 import logic.analyzeIngredients
@@ -33,15 +34,21 @@ import org.jetbrains.compose.web.css.backgroundColor
 import org.jetbrains.compose.web.css.boxSizing
 import org.jetbrains.compose.web.css.display
 import org.jetbrains.compose.web.css.flexDirection
+import org.jetbrains.compose.web.css.fontFamily
+import org.jetbrains.compose.web.css.fontSize
 import org.jetbrains.compose.web.css.fontWeight
 import org.jetbrains.compose.web.css.height
 import org.jetbrains.compose.web.css.margin
 import org.jetbrains.compose.web.css.maxWidth
 import org.jetbrains.compose.web.css.padding
 import org.jetbrains.compose.web.css.percent
+import org.jetbrains.compose.web.css.pt
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.rgb
+import org.jetbrains.compose.web.dom.A
 import org.jetbrains.compose.web.dom.Div
+import org.jetbrains.compose.web.dom.P
+import org.jetbrains.compose.web.dom.Span
 import org.jetbrains.compose.web.dom.Text as ComposeText
 
 @Composable
@@ -94,6 +101,8 @@ private fun WorkInProgressWarning(warningDialogOpen: Boolean, onClosed: () -> Un
 
 @Composable
 private fun Header() {
+    MDCH4("XenoSearch", attrs = { style { margin(0.px) } })
+    LinkToSourceCode()
     MDCBody1("Wklej skład produktu w poniższe pole:")
 }
 
@@ -116,7 +125,12 @@ private fun Results(ingredients: String) {
         """.trimIndent(),
     )
 
-    MDCBody2("Znalezione ksenoestrogeny przenoszone są na początek listy i oznaczane kolorem czerwonym.")
+    MDCBody2(
+        """
+        Znalezione w składzie produktu ksenoestrogeny przenoszone są na początek listy i oznaczane kolorem
+        czerwonym.
+        """.trimIndent(),
+    )
 
     MDCDataTable {
         Container {
@@ -142,6 +156,24 @@ private fun Results(ingredients: String) {
                         }
                     }
             }
+        }
+    }
+}
+
+@Composable
+fun LinkToSourceCode() {
+    P {
+        Span(attrs = {
+            style {
+                fontFamily("Roboto", "sans-serif")
+                fontSize(10.pt)
+            }
+        }) {
+            ComposeText("Kod źródłowy aplikacji dostępny na ")
+            A(href = "https://github.com/krzema12/xenosearch") {
+                ComposeText("GitHubie")
+            }
+            ComposeText(".")
         }
     }
 }
