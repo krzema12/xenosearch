@@ -41,12 +41,23 @@ fun App() {
     var ingredients by remember { mutableStateOf("") }
     var warningDialogOpen by remember { mutableStateOf(true) }
 
+    WorkInProgressWarning(warningDialogOpen, onClosed = { warningDialogOpen = false })
+
+    Column {
+        Header()
+        IngredientsInput(value = ingredients, onChange = { ingredients = it })
+        Results(ingredients)
+    }
+}
+
+@Composable
+private fun WorkInProgressWarning(warningDialogOpen: Boolean, onClosed: () -> Unit) {
     MDCDialog(
         open = warningDialogOpen,
         fullscreen = true,
         stacked = false,
         attrs = {
-            onClosed { warningDialogOpen = false }
+            onClosed { onClosed() }
         },
     ) {
         Header {
@@ -59,12 +70,6 @@ fun App() {
         Actions {
             Action(action = "ok", text = "OK")
         }
-    }
-
-    Column {
-        Header()
-        IngredientsInput(value = ingredients, onChange = { ingredients = it })
-        Results(ingredients)
     }
 }
 
