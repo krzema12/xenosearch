@@ -72,6 +72,7 @@ fun App() {
             Header()
             IngredientsInput(value = ingredients, onChange = { ingredients = it })
             Results(ingredients)
+            LinkToSourceCode()
         }
     }
 }
@@ -102,7 +103,6 @@ private fun WorkInProgressWarning(warningDialogOpen: Boolean, onClosed: () -> Un
 @Composable
 private fun Header() {
     MDCH4("XenoSearch", attrs = { style { margin(0.px) } })
-    LinkToSourceCode()
     MDCBody1("Wklej skład produktu w poniższe pole:")
 }
 
@@ -132,7 +132,7 @@ private fun Results(ingredients: String) {
         """.trimIndent(),
     )
 
-    MDCDataTable {
+    MDCDataTable(attrs = { style { height(400.px) } }) {
         Container {
             MDCDataTableHeader {
                 Cell(text = "Ksenoestrogen", attrs = { style { fontWeight("bold") } })
