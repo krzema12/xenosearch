@@ -26,13 +26,16 @@ import dev.petuska.kmdcx.icons.mdcIcon
 import logic.analyzeIngredients
 import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.FlexDirection
+import org.jetbrains.compose.web.css.backgroundColor
 import org.jetbrains.compose.web.css.boxSizing
 import org.jetbrains.compose.web.css.display
 import org.jetbrains.compose.web.css.flexDirection
+import org.jetbrains.compose.web.css.fontWeight
 import org.jetbrains.compose.web.css.height
 import org.jetbrains.compose.web.css.margin
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
+import org.jetbrains.compose.web.css.rgb
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Text as ComposeText
 
@@ -93,17 +96,23 @@ private fun Results(ingredients: String) {
         Container {
             MDCDataTableHeader {
                 Cell(text = "Ksenoestrogen")
-                Cell(text = "Znaleziono")
+                Cell(text = "Wynik")
             }
             Body {
                 analyzeIngredients(ingredients)
                     .entries
                     .sortedWith(compareBy({ !it.value }, { it.key.lowercase() }))
                     .forEach { (knownXenoestrogen, isPresent) ->
-                        Row {
+                        Row(attrs = {
+                            style {
+                                if (isPresent) {
+                                    backgroundColor(rgb(255, 100, 100))
+                                }
+                            }
+                        }) {
                             Cell(text = knownXenoestrogen)
-                            val resultMarker = if (isPresent) "⚠\uFE0F" else "⚪"
-                            Cell(text = resultMarker)
+                            val resultText = if (isPresent) "Znaleziono" else "Nie znaleziono"
+                            Cell(text = resultText)
                         }
                     }
             }
