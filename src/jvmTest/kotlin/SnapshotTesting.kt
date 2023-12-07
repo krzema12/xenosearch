@@ -7,7 +7,8 @@ import kotlin.io.path.readText
 import kotlin.io.path.writeText
 
 internal fun Map<String, Boolean>.shouldMatchSnapshot(testScope: TestScope) {
-    val sortedKeys = this.toSortedMap()
+    val onlyFound = this.filter { it.value }
+    val sortedKeys = onlyFound.toSortedMap()
     val serialized = json.encodeToString<Map<String, Boolean>>(sortedKeys)
     val pathToSnapshot = Path("src/jvmTest/resources/products/${testScope.testCase.name.testName}-snapshot.json")
 
