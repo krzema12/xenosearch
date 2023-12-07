@@ -5,6 +5,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import data.xenoestrogens
 import dev.petuska.kmdc.data.table.Body
 import dev.petuska.kmdc.data.table.Cell
 import dev.petuska.kmdc.data.table.Container
@@ -21,6 +22,7 @@ import dev.petuska.kmdc.dialog.Title
 import dev.petuska.kmdc.dialog.onClosed
 import dev.petuska.kmdc.textfield.MDCTextArea
 import dev.petuska.kmdc.typography.MDCBody1
+import dev.petuska.kmdc.typography.MDCBody2
 import dev.petuska.kmdcx.icons.MDCIcon
 import dev.petuska.kmdcx.icons.mdcIcon
 import logic.analyzeIngredients
@@ -92,6 +94,16 @@ fun IngredientsInput(value: String, onChange: (String) -> Unit) {
 
 @Composable
 private fun Results(ingredients: String) {
+    MDCBody2(
+        """
+        Wyszukiwarka weryfikuje skład pod kątem ${xenoestrogens.size} ksenoestrogenów (pełna lista poniżej). Nie
+        stanowi to pełnej bazy ksenoestrogenów występującej w kosmetykach. Wyszukiwarka wciąż jest aktualizowana o nowe
+        ksenoestrogeny.
+        """.trimIndent(),
+    )
+
+    MDCBody2("Znalezione ksenoestrogeny przenoszone są na początek listy i oznaczane kolorem czerwonym.")
+
     MDCDataTable {
         Container {
             MDCDataTableHeader {
