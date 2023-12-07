@@ -107,4 +107,23 @@ class AnalyzeIngredientsTest : FunSpec({
             "Bar" to true,
         )
     }
+
+    test("finds ingredient by search term") {
+        // given
+        val known = listOf(
+            Ingredient(
+                displayName = "Foo",
+                searchTerms = listOf("baz"),
+            ),
+        )
+        val ingredients = "bar, baz"
+
+        // when
+        val found = analyzeIngredients(ingredients = ingredients, knownXenoestrogens = known)
+
+        // then
+        found shouldBe mapOf(
+            "Foo" to true,
+        )
+    }
 })
