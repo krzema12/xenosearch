@@ -13,12 +13,8 @@ fun analyzeIngredients(
     return knownXenoestrogens
         .associateBy { it.displayName }
         .mapValues {
-            println("== ${it.key}")
             it.value.searchTerms.any { searchTerm ->
-                print("  - $searchTerm: ")
-                val result = individualIngredients.any { searchTerm.lowercase() in it }
-                println(result)
-                result
+                individualIngredients.any { searchTerm.lowercase() in it }
             }
         }
 }
