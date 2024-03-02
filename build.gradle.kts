@@ -32,7 +32,7 @@ kotlin {
             dependencies {
                 implementation(compose.html.core)
                 implementation("dev.petuska:kmdc-data-table:0.1.2")
-                implementation("dev.petuska:kmdc-dialog:0.1.1")
+                implementation("dev.petuska:kmdc-dialog:0.1.2")
                 implementation("dev.petuska:kmdc-textfield:0.1.1")
                 implementation("dev.petuska:kmdc-typography:0.1.1")
                 implementation("dev.petuska:kmdcx-icons:0.1.1")
