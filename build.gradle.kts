@@ -41,7 +41,7 @@ kotlin {
 
         val commonTest by getting {
             dependencies {
-                implementation("io.kotest:kotest-framework-engine:5.8.1")
+                implementation("io.kotest:kotest-framework-engine:5.9.1")
             }
         }
 
