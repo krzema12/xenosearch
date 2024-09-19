@@ -48,7 +48,7 @@ kotlin {
         val jvmTest by getting {
             dependencies {
                 implementation("io.kotest:kotest-runner-junit5:5.8.1")
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
             }
         }
     }
