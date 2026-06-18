@@ -15,7 +15,7 @@ jobs:
     steps:
     - id: 'step-0'
       name: 'Check out'
-      uses: 'actions/checkout@v4'
+      uses: 'actions/checkout@v7'
     - id: 'step-1'
       name: 'Generate action bindings'
       run: '.github/workflows/generate-action-bindings.main.kts "build.yaml"'
@@ -31,7 +31,7 @@ jobs:
     - 'check_yaml_consistency'
     steps:
     - id: 'step-0'
-      uses: 'actions/checkout@v4'
+      uses: 'actions/checkout@v7'
     - id: 'step-1'
       uses: 'actions/setup-java@v4'
       with:
@@ -50,7 +50,7 @@ jobs:
     if: '${{ github.ref == ''refs/heads/main'' }}'
     steps:
     - id: 'step-0'
-      uses: 'actions/checkout@v4'
+      uses: 'actions/checkout@v7'
     - id: 'step-1'
       uses: 'actions/setup-java@v4'
       with:
